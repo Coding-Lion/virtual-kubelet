@@ -37,7 +37,7 @@ func getAPIConfig(c Opts) (*apiServerConfig, error) {
 		CACertPath: os.Getenv("APISERVER_CA_CERT_LOCATION"),
 	}
 
-	config.Addr = fmt.Sprintf(":%d", c.ListenPort)
+	config.Addr = fmt.Sprintf("%s:%d", os.Getenv("VKUBELET_POD_IP"), c.ListenPort)
 	config.MetricsAddr = c.MetricsAddr
 	config.StreamIdleTimeout = c.StreamIdleTimeout
 	config.StreamCreationTimeout = c.StreamCreationTimeout

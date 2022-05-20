@@ -33,6 +33,8 @@ import (
 	logruslogger "github.com/virtual-kubelet/virtual-kubelet/log/logrus"
 	"github.com/virtual-kubelet/virtual-kubelet/trace"
 	"github.com/virtual-kubelet/virtual-kubelet/trace/opencensus"
+	// "net/http"
+	// _ "net/http/pprof"
 )
 
 var (
@@ -42,6 +44,7 @@ var (
 )
 
 func main() {
+
 	ctx, cancel := context.WithCancel(context.Background())
 	sig := make(chan os.Signal, 1)
 	signal.Notify(sig, syscall.SIGINT, syscall.SIGTERM)
@@ -52,6 +55,10 @@ func main() {
 
 	log.L = logruslogger.FromLogrus(logrus.NewEntry(logrus.StandardLogger()))
 	trace.T = opencensus.Adapter{}
+
+	// go func() {
+	// 	log.GetLogger(ctx).Info(http.ListenAndServe("localhost:6060", nil))
+	// }()
 
 	var opts root.Opts
 	optsErr := root.SetDefaultOpts(&opts)

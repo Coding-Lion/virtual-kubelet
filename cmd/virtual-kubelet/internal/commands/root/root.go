@@ -127,7 +127,7 @@ func runRootCommand(ctx context.Context, s *provider.Store, c Opts) error {
 
 		return nil
 	},
-		setAuth(c.NodeName, apiConfig),
+		//setAuth(c.NodeName, apiConfig),
 		nodeutil.WithTLSConfig(
 			nodeutil.WithKeyPairFromPath(apiConfig.CertPath, apiConfig.KeyPath),
 			maybeCA(apiConfig.CACertPath),

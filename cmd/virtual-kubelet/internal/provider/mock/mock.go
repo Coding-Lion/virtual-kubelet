@@ -106,7 +106,7 @@ func loadConfig(providerConfig, nodeName string) (config MockConfig, err error) 
 	if err != nil {
 		return config, err
 	}
-	if _, exist := configMap[nodeName]; exist {
+	if _, exist := configMap["vkubelet-mock-0"]; exist {
 		config = configMap[nodeName]
 		if config.CPU == "" {
 			config.CPU = defaultCPUCapacity

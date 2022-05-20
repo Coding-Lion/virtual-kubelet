@@ -129,7 +129,7 @@ func WebhookAuth(client kubernetes.Interface, nodeName string, opts ...WebhookAu
 			return nil, err
 		}
 	}
-
+	
 	cfg.AuthnConfig.TokenAccessReviewClient = client.AuthenticationV1().TokenReviews()
 	cfg.AuthzConfig.SubjectAccessReviewClient = client.AuthorizationV1().SubjectAccessReviews()
 
